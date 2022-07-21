@@ -1,0 +1,16 @@
+{
+    "name": "Edge Extension!",
+    "version": "1.0",
+    "description": "Make an awesome extension",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "./js/background.js"
+    },
+    "action": {
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "notifications"
+    ]
+}
