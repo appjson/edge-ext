@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
     "target": "ESNext",
+    "module": "ESNext",
     "typeRoots": ["./node_modules/@types"],
     "outDir": "./js/"
   },
   "buildOptions": {},
-  "include": ["./*.ts", "./**/*.ts"],
+  "include": ["./ts/*.ts"],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }
