@@ -8,7 +8,7 @@ button.on("click", function () {
       type: "basic",
       title: "到时间啦!",
       message: content,
-      iconUrl: "icon.png",
+      iconUrl: "./assets/icon.png",
     });
   }, Number(time) * 1000);
 });
