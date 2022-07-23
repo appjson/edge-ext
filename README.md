@@ -18,10 +18,6 @@ yarn install
 
 ## 构建
 
-需要提前在全局安装 `typescript`:
-
-`npm i -g typescript`
-
 ```shell
 yarn build
 ```
@@ -33,5 +29,5 @@ yarn build
 使用 Typescript 开发：
 
 ```shell
-tsc --watch
+yarn start
 ```
