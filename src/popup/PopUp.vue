@@ -12,7 +12,7 @@ function startTimer() {
         type: "basic",
         title: "到时间啦!",
         message: msg.value,
-        iconUrl: "assets/icon.png",
+        iconUrl: "/assets/logo.png",
       });
     }, time * 1000);
   }
