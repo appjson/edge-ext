@@ -2,6 +2,8 @@
 
 Edge 浏览器插件开发学习项目
 
+基于 Vue3.js
+
 ## 安装
 
 需要提前安装`nodejs`和`yarn`
@@ -20,14 +22,4 @@ yarn install
 
 ```shell
 yarn build
-```
-
-## 开发
-
-不使用 Typescript 编写可以直接修改`js`目录下的 Javascript 文件。
-
-使用 Typescript 开发：
-
-```shell
-yarn start
 ```
