@@ -38,7 +38,7 @@ module.exports = {
   pages,
   productionSourceMap: false,
   configureWebpack: {
-    mode: "development", // 发布的时候删除
+    // mode: "development", // 开发模式
     entry: {
       background: "./src/background/background.js",
       content: "./src/content/content.js",

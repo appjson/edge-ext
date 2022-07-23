@@ -20,6 +20,8 @@ yarn install
 
 ## 构建
 
+默认使用 production 模式。因为 chrome 不允许 eval，但是 webpack 的 development 模式会采用 eval
+
 ```shell
-yarn build
+yarn build --mode production
 ```
