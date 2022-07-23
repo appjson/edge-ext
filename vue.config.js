@@ -40,7 +40,8 @@ module.exports = {
   configureWebpack: {
     mode: "development", // 发布的时候删除
     entry: {
-      background: "./src/background/main.js",
+      background: "./src/background/background.js",
+      content: "./src/content/content.js",
     },
     output: {
       filename: "js/[name].js",

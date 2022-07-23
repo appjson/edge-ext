@@ -24,6 +24,7 @@ chrome.runtime.onInstalled.addListener(async () => {
     contexts: ["page"],
   });
 });
+
 chrome.contextMenus.onClicked.addListener((info) => {
   switch (info.menuItemId) {
     case "saveText":
@@ -37,6 +38,22 @@ chrome.contextMenus.onClicked.addListener((info) => {
       break;
     case "savePage":
       console.log("记录页面", info.pageUrl);
+      break;
+  }
+});
+
+chrome.runtime.onMessage.addListener((data) => {
+  console.log("onMessage", data);
+  switch (data.type) {
+    case "notification":
+      chrome.notifications.create("", {
+        type: "basic",
+        title: "提醒!",
+        message: data.message,
+        iconUrl: "/assets/icon.png",
+      });
+      break;
+    default:
       break;
   }
 });
