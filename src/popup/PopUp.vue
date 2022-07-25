@@ -18,11 +18,11 @@ function startTimer() {
 </script>
 
 <template>
-  <div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1">时间(秒)</span>
+  <div class="section">
+    <span class="section-text" id="basic-addon1">时间(秒)</span>
     <n-input
-      v-model="timer"
-      type="text"
+      v-model:value="timer"
+      type="number"
       class="form-control"
       id="time"
       placeholder="例如 10"
@@ -30,18 +30,18 @@ function startTimer() {
       aria-describedby="basic-addon1"
     />
   </div>
-  <div class="input-group mb-3">
+  <div class="section">
     <n-input
+      v-model:value="msg"
       type="textarea"
-      v-model="msg"
       class="form-control"
       aria-label="With textarea"
       id="content"
       placeholder="请输入内容"
-    ></n-input>
+    />
   </div>
-  <div class="d-grid gap-2">
-    <n-button flat class="btn btn-dark" id="confirm" @click="startTimer">
+  <div class="section">
+    <n-button strong secondary round type="primary" @click="startTimer">
       确认
     </n-button>
   </div>
@@ -56,6 +56,11 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  margin: 10px 10px;
 }
 </style>
