@@ -53,6 +53,16 @@ chrome.runtime.onMessage.addListener((data) => {
         iconUrl: "/assets/icon.png",
       });
       break;
+    case "timer":
+      setTimeout(() => {
+        chrome.notifications.create("", {
+          type: "basic",
+          title: data.title,
+          message: "",
+          iconUrl: "/assets/icon.png",
+        });
+      }, Number.parseInt(data.time) * 1000);
+      break;
     default:
       break;
   }
