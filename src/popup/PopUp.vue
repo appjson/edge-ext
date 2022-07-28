@@ -1,49 +1,41 @@
 <script setup>
 import { ref } from "vue";
-import { NInput, NButton } from "naive-ui";
+import { NSpace, NSwitch, NCollapseTransition } from "naive-ui";
 
-const timer = ref("");
-const msg = ref("");
+// const timer = ref("");
+// const msg = ref("");
 
-function startTimer() {
-  const time = Number.parseInt(timer.value);
-  if (time >= 0) {
-    chrome.runtime.sendMessage("", {
-      type: "timer",
-      title: msg.value,
-      time: timer.value,
-    });
-  }
-}
+// function startTimer() {
+//   const time = Number.parseInt(timer.value);
+//   if (time >= 0) {
+//     chrome.runtime.sendMessage("", {
+//       type: "timer",
+//       title: msg.value,
+//       time: timer.value,
+//     });
+//   }
+// }
+
+const showBtn = ref(true);
+const showColor = ref(true);
 </script>
 
 <template>
   <div class="section">
-    <span class="section-text" id="basic-addon1">时间(秒)</span>
-    <n-input
-      v-model:value="timer"
-      type="number"
-      class="form-control"
-      id="time"
-      placeholder="例如 10"
-      aria-label="Username"
-      aria-describedby="basic-addon1"
-    />
-  </div>
-  <div class="section">
-    <n-input
-      v-model:value="msg"
-      type="textarea"
-      class="form-control"
-      aria-label="With textarea"
-      id="content"
-      placeholder="请输入内容"
-    />
-  </div>
-  <div class="section">
-    <n-button strong secondary round type="primary" @click="startTimer">
-      确认
-    </n-button>
+    <div class="label">宠物开关</div>
+    <n-space vertical>
+      <n-switch v-model:value="showBtn">
+        <template #checked> 开启 </template>
+        <template #unchecked> 关闭 </template>
+      </n-switch>
+      <n-collapse-transition :show="showBtn">
+        <div class="label">宠物颜色</div>
+        <n-switch v-model:value="showColor">
+          <template #checked> 白色 </template>
+          <template #unchecked> 黑色 </template>
+        </n-switch>
+      </n-collapse-transition>
+    </n-space>
   </div>
 </template>
 
@@ -61,6 +53,12 @@ body {
 }
 
 .section {
-  margin: 10px 10px;
+  margin: 12px 10px;
+}
+
+.label {
+  font-size: 1.1rem;
+  border-bottom: 1px solid gray;
+  margin: 6px 0;
 }
 </style>
