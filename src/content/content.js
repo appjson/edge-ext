@@ -18,8 +18,7 @@
     divElem.style.position = "absolute";
     divElem.style.right = "0";
     divElem.style.bottom = "0";
-    divElem.style.width = "100%";
-    divElem.style.height = "100%";
+    divElem.style.pointerEvents = "none";
     document.body.appendChild(divElem);
     const reactScript = document.createElement("script");
     reactScript.setAttribute("type", "text/javascript");

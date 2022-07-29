@@ -90,6 +90,7 @@ const popContent = function () {
       style={{
         display: "flex",
         flexDirection: "column",
+        pointerEvents: "auto",
       }}
     >
       <Button style={btnStyle} type="primary" onClick={getCovidInfo}>
@@ -104,9 +105,16 @@ const popContent = function () {
 
 function App() {
   return (
-    <div className="App" id="content-js-div">
+    <div className="App">
       <Popover placement="leftTop" content={popContent()} title="菜单">
-        <canvas width="300" height="400" className="canvas"></canvas>
+        <canvas
+          width="300"
+          height="400"
+          className="canvas"
+          style={{
+            pointerEvents: "auto",
+          }}
+        ></canvas>
       </Popover>
     </div>
   );
