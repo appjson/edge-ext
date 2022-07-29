@@ -3,12 +3,6 @@ import "./App.css";
 import { notification, Popover, Button } from "antd";
 import { getInfo, getLocation, getWeatherInfo } from "./utils";
 
-// async function getMsg() {
-//   const url = "https://sdfsdf.dev/2s";
-//   const resp = await fetch(url);
-//   return await resp.json();
-// }
-
 function getCovidInfo() {
   notification.info({
     key: "covid19",
