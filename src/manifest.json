@@ -5,16 +5,16 @@
     "homepage_url": "https://github.com/appjson/edge-ext",
     "manifest_version": 3,
     "icons": {
-        "16": "assets/logo.png",
-        "48": "assets/logo.png",
-        "64": "assets/logo.png",
-        "128": "assets/logo.png"
+        "16": "assets/logo_16.png",
+        "48": "assets/logo_48.png",
+        "64": "assets/logo_64.png",
+        "128": "assets/logo_128.png"
     },
     "background": {
         "service_worker": "js/background.js"
     },
     "action": {
-        "default_icon": "assets/logo.png",
+        "default_icon": "assets/logo_128.png",
         "default_popup": "popup.html"
     },
     "content_scripts": [
