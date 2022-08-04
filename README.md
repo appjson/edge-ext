@@ -43,3 +43,12 @@ yarn build --mode production
 ```
 
 `dist`目录即为生成后可导入 edge 的插件目录
+
+## 使用的开源项目
+
+- [Vue3.js](https://github.com/vuejs/core)
+- [React.js](https://github.com/facebook/react)
+- [Naive UI](https://github.com/TuSimple/naive-ui)
+- [Ant Design](https://github.com/ant-design/ant-design)
+- [live2d](https://github.com/stevenjoezhang/live2d-widget)
+- [live2d model](https://github.com/ezshine/live2d-model-collections)
