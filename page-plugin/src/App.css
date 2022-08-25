@@ -1,4 +1,7 @@
-@import "~antd/dist/antd.css";
+/*@import "~antd/dist/antd.css";*/
+@import "~antd/lib/button/style";
+@import "~antd/lib/popover/style";
+@import "~antd/lib/notification/style";
 
 .App {
   text-align: left;
