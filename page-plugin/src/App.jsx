@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.less";
+import "./App.css";
 import { notification, Popover, Button } from "antd";
 import { getInfo, getLocation, getWeatherInfo } from "./utils";
 
@@ -77,9 +77,7 @@ function getWeather() {
 
 const popContent = function () {
   const btnStyle = {
-    margin: "6px 0",
-    height: "36px",
-    width: "140px",
+    margin: "4px 0",
   };
   return (
     <div
@@ -87,10 +85,9 @@ const popContent = function () {
         display: "flex",
         flexDirection: "column",
         pointerEvents: "auto",
-        width: "auto",
       }}
     >
-      <Button style={btnStyle} type="primary" onClick={getCovidInfo} >
+      <Button style={btnStyle} type="primary" onClick={getCovidInfo}>
         疫情信息
       </Button>
       <Button style={btnStyle} type="primary" onClick={getWeather}>
