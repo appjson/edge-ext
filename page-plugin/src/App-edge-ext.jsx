@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./App-edge-ext.css";
 import { notification, Popover, Button } from "antd";
 import { getInfo, getLocation, getWeatherInfo } from "./utils";
 
@@ -69,7 +69,7 @@ function getWeather() {
     })
     .catch(() => {
       notification.warn({
-        message: "获取地理位置失败！请查看是否赋予权限！",
+        message: "获取天气失败\n请查看是否给予位置权限！",
       });
       return;
     });
@@ -99,12 +99,12 @@ const popContent = function () {
 
 function App() {
   return (
-    <div className="App">
+    <div className="App-edge-ext">
       <Popover placement="leftTop" content={popContent()} title="菜单">
         <canvas
           width="300"
           height="400"
-          className="canvas"
+          className="canvas-edge-ext"
           style={{
             pointerEvents: "auto",
           }}

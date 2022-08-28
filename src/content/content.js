@@ -1,7 +1,7 @@
 (function () {
   function setupCatPanel() {
     let canvas = document.createElement("canvas");
-    canvas.id = "live2d";
+    canvas.id = "live2d-edge-ext";
     canvas.width = 300;
     canvas.height = 400;
     canvas.style.width = "150px";
@@ -14,7 +14,7 @@
 
     document.body.appendChild(canvas);
     const divElem = document.createElement("div");
-    divElem.id = "content-js-div";
+    divElem.id = "content-js-div-edge-ext";
     divElem.style.position = "absolute";
     divElem.style.right = "0";
     divElem.style.bottom = "0";
@@ -22,10 +22,13 @@
     document.body.appendChild(divElem);
     const reactScript = document.createElement("script");
     reactScript.setAttribute("type", "text/javascript");
-    reactScript.src = chrome.runtime.getURL("/assets/react.js");
+    reactScript.src = chrome.runtime.getURL("/assets/react-edge-ext.js");
     const styleCss = document.createElement("link");
     styleCss.setAttribute("rel", "stylesheet");
-    styleCss.setAttribute("href", chrome.runtime.getURL("/assets/content.css"));
+    styleCss.setAttribute(
+      "href",
+      chrome.runtime.getURL("/assets/content-edge-ext.css")
+    );
     document.head.appendChild(reactScript);
     document.head.appendChild(styleCss);
   }
@@ -33,7 +36,7 @@
   function setupModel() {
     let loadLive = document.createElement("script");
     loadLive.setAttribute("type", "text/javascript");
-    loadLive.src = chrome.runtime.getURL("/assets/contentLoader.js");
+    loadLive.src = chrome.runtime.getURL("/assets/contentLoader-edge-ext.js");
     document.body.appendChild(loadLive);
     let meta = document.createElement("meta");
     meta.setAttribute("content", chrome.runtime.getURL("/assets/model.json"));
