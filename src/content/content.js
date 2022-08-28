@@ -33,13 +33,16 @@
     document.head.appendChild(styleCss);
   }
 
-  function setupModel() {
+  function setupModel(color) {
     let loadLive = document.createElement("script");
     loadLive.setAttribute("type", "text/javascript");
     loadLive.src = chrome.runtime.getURL("/assets/contentLoader-edge-ext.js");
     document.body.appendChild(loadLive);
     let meta = document.createElement("meta");
-    meta.setAttribute("content", chrome.runtime.getURL("/assets/model.json"));
+    meta.setAttribute(
+      "content",
+      chrome.runtime.getURL(`/assets/${color}cat/model.json`)
+    );
     meta.setAttribute("name", "model_url");
     document.head.appendChild(meta);
   }
@@ -55,12 +58,13 @@
     document.head.appendChild(temp);
   }
 
-  chrome.storage.sync.get(["catShow"], (res) => {
+  chrome.storage.sync.get(["catShow", "catColor"], (res) => {
     const catShow = res.catShow;
+    const catColor = res.catColor === true ? "white" : "black";
     if (catShow) {
       injectCustomJs("/assets/live2d-mini.js", function () {
         setupCatPanel();
-        setupModel();
+        setupModel(catColor);
       });
     }
   });
