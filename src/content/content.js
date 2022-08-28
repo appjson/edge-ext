@@ -1,7 +1,7 @@
 (function () {
   function setupCatPanel() {
     let canvas = document.createElement("canvas");
-    canvas.id = "live2d";
+    canvas.id = "live2d-edge-ext";
     canvas.width = 300;
     canvas.height = 400;
     canvas.style.width = "150px";
@@ -14,7 +14,7 @@
 
     document.body.appendChild(canvas);
     const divElem = document.createElement("div");
-    divElem.id = "content-js-div";
+    divElem.id = "content-js-div-edge-ext";
     divElem.style.position = "absolute";
     divElem.style.right = "0";
     divElem.style.bottom = "0";
@@ -22,21 +22,27 @@
     document.body.appendChild(divElem);
     const reactScript = document.createElement("script");
     reactScript.setAttribute("type", "text/javascript");
-    reactScript.src = chrome.runtime.getURL("/assets/react.js");
+    reactScript.src = chrome.runtime.getURL("/assets/react-edge-ext.js");
     const styleCss = document.createElement("link");
     styleCss.setAttribute("rel", "stylesheet");
-    styleCss.setAttribute("href", chrome.runtime.getURL("/assets/content.css"));
+    styleCss.setAttribute(
+      "href",
+      chrome.runtime.getURL("/assets/content-edge-ext.css")
+    );
     document.head.appendChild(reactScript);
     document.head.appendChild(styleCss);
   }
 
-  function setupModel() {
+  function setupModel(color) {
     let loadLive = document.createElement("script");
     loadLive.setAttribute("type", "text/javascript");
-    loadLive.src = chrome.runtime.getURL("/assets/contentLoader.js");
+    loadLive.src = chrome.runtime.getURL("/assets/contentLoader-edge-ext.js");
     document.body.appendChild(loadLive);
     let meta = document.createElement("meta");
-    meta.setAttribute("content", chrome.runtime.getURL("/assets/model.json"));
+    meta.setAttribute(
+      "content",
+      chrome.runtime.getURL(`/assets/${color}cat/model.json`)
+    );
     meta.setAttribute("name", "model_url");
     document.head.appendChild(meta);
   }
@@ -52,8 +58,14 @@
     document.head.appendChild(temp);
   }
 
-  injectCustomJs("/assets/live2d-mini.js", function () {
-    setupCatPanel();
-    setupModel();
+  chrome.storage.sync.get(["catShow", "catColor"], (res) => {
+    const catShow = res.catShow;
+    const catColor = res.catColor === true ? "white" : "black";
+    if (catShow) {
+      injectCustomJs("/assets/live2d-mini.js", function () {
+        setupCatPanel();
+        setupModel(catColor);
+      });
+    }
   });
 })();

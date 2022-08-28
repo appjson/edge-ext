@@ -1,7 +1,7 @@
 {
-    "name": "闪念胶囊!",
+    "name": "白猫助手",
     "version": "1.0",
-    "description": "记录Edge的浏览瞬间",
+    "description": "你的工作生活新帮手",
     "homepage_url": "https://github.com/appjson/edge-ext",
     "manifest_version": 3,
     "icons": {
@@ -44,6 +44,8 @@
         "notifications",
         "contextMenus",
         "webRequest",
-        "storage"
+        "storage",
+        "tabs",
+        "activeTab"
     ]
 }
