@@ -1,5 +1,5 @@
 import React from "react";
-import "./App-edge-ext.css";
+import "./App-edge-ext.less";
 import { notification, Popover, Button } from "antd";
 import { getInfo, getLocation, getWeatherInfo } from "./utils";
 
