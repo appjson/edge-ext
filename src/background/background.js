@@ -45,23 +45,10 @@ chrome.contextMenus.onClicked.addListener((info) => {
 chrome.runtime.onMessage.addListener((data) => {
   console.log("onMessage", data);
   switch (data.type) {
-    case "notification":
-      chrome.notifications.create("", {
-        type: "basic",
-        title: "提醒!",
-        message: data.message,
-        iconUrl: "/assets/icon.png",
+    case "getTabs":
+      chrome.tabs.query({ active: true }, (tabs) => {
+        console.log(tabs);
       });
-      break;
-    case "timer":
-      setTimeout(() => {
-        chrome.notifications.create("", {
-          type: "basic",
-          title: data.title,
-          message: "",
-          iconUrl: "/assets/icon.png",
-        });
-      }, Number.parseInt(data.time) * 1000);
       break;
     default:
       break;

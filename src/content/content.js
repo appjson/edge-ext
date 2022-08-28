@@ -55,8 +55,13 @@
     document.head.appendChild(temp);
   }
 
-  injectCustomJs("/assets/live2d-mini.js", function () {
-    setupCatPanel();
-    setupModel();
+  chrome.storage.sync.get(["catShow"], (res) => {
+    const catShow = res.catShow;
+    if (catShow) {
+      injectCustomJs("/assets/live2d-mini.js", function () {
+        setupCatPanel();
+        setupModel();
+      });
+    }
   });
 })();

@@ -1,6 +1,6 @@
 <script setup>
-import { ref } from "vue";
-import { NSpace, NSwitch, NCollapseTransition } from "naive-ui";
+import { ref, watch, onMounted } from "vue";
+import { NSpace, NSwitch, NCollapseTransition, NButton } from "naive-ui";
 
 // const timer = ref("");
 // const msg = ref("");
@@ -16,8 +16,33 @@ import { NSpace, NSwitch, NCollapseTransition } from "naive-ui";
 //   }
 // }
 
-const showBtn = ref(true);
+const showBtn = ref(false);
 const showColor = ref(true);
+
+onMounted(() => {
+  chrome.storage.sync.get(["catShow", "catColor"], (res) => {
+    showBtn.value = res.catShow;
+    showColor.value = res.catColor;
+  });
+});
+
+watch(showBtn, (newVal) => {
+  chrome.storage.sync.set({ catShow: newVal }, () => {
+    console.log("Cat Show:", newVal);
+  });
+});
+
+watch(showColor, (newVal) => {
+  chrome.storage.sync.set({ catColor: newVal }, () => {
+    console.log("Cat Color:", newVal);
+  });
+});
+
+const reload = function () {
+  chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
+    chrome.tabs.reload(tab.id);
+  });
+};
 </script>
 
 <template>
@@ -35,6 +60,9 @@ const showColor = ref(true);
           <template #unchecked> 黑色 </template>
         </n-switch>
       </n-collapse-transition>
+      <n-button strong secondary round type="info" @click="reload">
+        应用
+      </n-button>
     </n-space>
   </div>
 </template>
