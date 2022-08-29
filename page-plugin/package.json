@@ -6,7 +6,9 @@
     "antd": "^4.22.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "@craco/craco": "^6.4.5",
+    "craco-less": "^2.0.0"
   },
   "scripts": {
     "start": "craco start",
