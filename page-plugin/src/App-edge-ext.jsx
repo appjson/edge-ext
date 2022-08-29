@@ -1,5 +1,5 @@
 import React from "react";
-import "./App-edge-ext.css";
+import "./App-edge-ext.less";
 import { notification, Popover, Button } from "antd";
 import { getInfo, getLocation, getWeatherInfo } from "./utils";
 
@@ -77,7 +77,9 @@ function getWeather() {
 
 const popContent = function () {
   const btnStyle = {
-    margin: "4px 0",
+    margin: "6px 0",
+    height: "36px",
+    width: "140px",
   };
   return (
     <div
@@ -100,7 +102,7 @@ const popContent = function () {
 function App() {
   return (
     <div className="App-edge-ext">
-      <Popover placement="leftTop" content={popContent()} title="菜单">
+      <Popover placement="leftTop" content={popContent()} >
         <canvas
           width="300"
           height="400"
