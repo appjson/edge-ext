@@ -102,10 +102,8 @@ const popContent = function () {
 function App() {
   return (
     <div className="App-edge-ext">
-      <Popover placement="leftTop" content={popContent()} >
+      <Popover placement="leftTop" content={popContent()}>
         <canvas
-          width="300"
-          height="400"
           className="canvas-edge-ext"
           style={{
             pointerEvents: "auto",
