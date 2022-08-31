@@ -90,7 +90,7 @@
   }
 
   chrome.storage.sync.get(["catShow", "catStyle"], (res) => {
-    const catShow = res.catShow || true;
+    const catShow = res.catShow;
     const catStyle = res.catStyle || "cat-1";
     if (catShow && catStyle !== "blackcat" && catStyle !== "whitecat") {
       setupFlatPanel(catStyle);
@@ -99,6 +99,8 @@
         setupCatPanel();
         setupModel(catStyle);
       });
+    } else {
+      return;
     }
   });
 })();
