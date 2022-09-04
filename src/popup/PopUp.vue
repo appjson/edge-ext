@@ -62,8 +62,8 @@ const showBtn = ref(false);
 
 onMounted(() => {
   chrome.storage.sync.get(["catShow", "catStyle"], (res) => {
-    showBtn.value = res.catShow;
-    handleSelect(res.catStyle);
+    showBtn.value = res.catShow === undefined ? true : res.catShow;
+    handleSelect(res.catStyle ? res.catStyle : "cat-1");
   });
 });
 
