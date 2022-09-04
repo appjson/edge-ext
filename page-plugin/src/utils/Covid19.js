@@ -8,6 +8,6 @@ export async function getResp(area) {
 export async function getInfo(area) {
   return getResp(area).then((data) => {
     console.log("疫情信息", data);
-    return `【${data.results[0].provinceName}】目前确诊${data.results[0].currentConfirmedCount}个`;
+    return `【${data.results[0].provinceName}】目前确诊${data.results[0].currentConfirmedCount}个；疑似感染${data.results[0].suspectedCount}个；治愈${data.results[0].curedCount}个`;
   });
 }
