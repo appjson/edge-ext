@@ -11,36 +11,27 @@ function getCovidInfo() {
     bottom: 200,
   });
   getLocation()
-    .then((data) => {
-      return getInfo(data.adm1);
+    .then((locData) => {
+      locData = locData.country === "中国" ? locData.adm1 : locData.country;
+      return getInfo(locData);
     })
     .then((data) => {
       console.log(data);
       notification.open({
         key: "covid19",
+        duration: 8,
         message: data,
         placement: "bottomRight",
         bottom: 200,
       });
     })
     .catch(() => {
-      getInfo("中国")
-        .then((data) => {
-          notification.open({
-            key: "covid19",
-            message: data,
-            placement: "bottomRight",
-            bottom: 200,
-          });
-        })
-        .catch(() => {
-          notification.error({
-            key: "covid19",
-            message: "获取失败",
-            placement: "bottomRight",
-            bottom: 200,
-          });
-        });
+      notification.error({
+        key: "covid19",
+        message: "获取失败",
+        placement: "bottomRight",
+        bottom: 200,
+      });
     });
 }
 
@@ -48,9 +39,9 @@ function getWeather() {
   getLocation()
     .then((data) => {
       // console.log(data);
-      const weatherMsg = `当前天气：${data.city}`;
+      const weatherMsg = `【${data.city}】天气`;
       notification.open({
-        duration: 8,
+        duration: 5,
         message: weatherMsg,
         placement: "bottomRight",
         bottom: 200,
@@ -61,7 +52,7 @@ function getWeather() {
       // console.log(v);
       const weatherMsg = `现在是${v.now.text}天；气温${v.now.temp}°；体感气温${v.now.feelsLike}°；相对湿度${v.now.humidity}%；风向${v.now.windDir}；风速${v.now.windSpeed}km/h`;
       notification.open({
-        duration: 5,
+        duration: 10,
         message: weatherMsg,
         placement: "bottomRight",
         bottom: 200,
@@ -102,10 +93,8 @@ const popContent = function () {
 function App() {
   return (
     <div className="App-edge-ext">
-      <Popover placement="leftTop" content={popContent()} >
+      <Popover placement="leftTop" content={popContent()}>
         <canvas
-          width="300"
-          height="400"
           className="canvas-edge-ext"
           style={{
             pointerEvents: "auto",
